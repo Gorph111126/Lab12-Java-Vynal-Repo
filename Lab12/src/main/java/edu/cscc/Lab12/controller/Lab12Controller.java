@@ -23,6 +23,9 @@ import jakarta.validation.Valid;
 public class Lab12Controller {
 	@Autowired
 	VinalRecordRepository repo;
+
+	@Autowired
+	UnsafeRepo unsafeRepo;
 	
 
 	//get /records
@@ -47,7 +50,7 @@ public class Lab12Controller {
 			System.out.println("Can't Validate");
 			return "addNewRecordPage";
 		}else {
-			VinalRecord thisRecord = repo.save(newRecord);
+			VinalRecord thisRecord = unsafeRepo.save(newRecord);
 			System.out.println("Validated + Created");
 			return "redirect:/records/" + thisRecord.getId();
 		}
