@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>UwU im the wekord page </title>
+</head>
+<style>
+	table{
+	text-align:center;
+	width:100%;
+	
+	}
+	
+	.empty{
+	background-color:#ffe6b3;
+	width:70%;
+	margin: auto;
+	font-size:25px;
+	text-align:center;
+	}
+	
+	.addButton{
+	float:center;
+	width:2000px;
+	height:150px;
+	}
+	
+</style>
+<body>
+
+<div th:if="${allRecords.empty}" class="empty">
+	There are no records in the database. Press the button to add one!
+<br>
+		<a href = "http://localhost:8080/add-record" class="addButton">
+			<button>Add A new record</button>
+		</a>
+</div>
+
+
+<table th:if="!${allRecords.empty}">
+	<tr>
+		<td>Title</td>
+		<td>Artist</td>
+		<td>Year Released</td>
+		<td>More info</td>
+	</tr>
+<!-- FOR EACH LOOP NOT WORKING AAAAAAHHHHHHHHHHHH
+	for each _record_ in _all records_
+-->
+	<tr th:each =" VinalRecord : ${allRecords}">
+		<td th:text="${VinalRecord.title}"></td>
+		<td th:text="${VinalRecord.artist}"></td>
+		<td th:text="${VinalRecord.released}"></td>
+		<td>
+			<a th:href="@{'	/records/' + ${VinalRecord.id}}">More Info</a>	
+		</td>
+	</tr>
+	<tr>
+		<a href = "http://localhost:8080/add-record" class="addButton">
+			<button>Add A new record</button>
+		</a>
+	</tr>
+</table>
+
+
+</body>
+</html>

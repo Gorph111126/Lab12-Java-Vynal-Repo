@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!-- ALL DONE, MAYBE ADD FORMATTING -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>record page</title>
+</head>
+<body>
+
+<h1 th:text = "'Album Title: ' + ${oneRecord.title}"></h1>
+<p th:text ="'Artist: ' + ${oneRecord.artist}"></p>
+<p th:text ="'Label: ' + ${oneRecord.label} "></p>
+<p th:text ="'Release Year: ' + ${oneRecord.released} "></p>
+<p th:text ="'Number of Tracks: ' + ${oneRecord.numTracks} "></p>
+<p th:text ="'Record Size: ' + ${oneRecord.size} + ' inches' "></p>
+<p th:text ="'Is Record Damaged: ' + ${oneRecord.damaged} "></p>
+<a href = "http://localhost:8080/records">
+	<button type="button">Return to collection</button>
+</a>
+</body>
+</html>
